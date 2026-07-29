@@ -121,8 +121,10 @@ with tab3:
     col2.metric("Failure mean popularity", f"{f.mean():.2f}")
     col3.metric("p-value", f"{p_val:.4f}")
     st.write("**H0:** mean popularity is equal for successful and unsuccessful movies.")
-    st.success("Reject H0 — statistically significant difference (p < 0.05).") if p_val < 0.05 \
-        else st.info("Fail to reject H0 — no significant difference (p ≥ 0.05).")
+    if p_val < 0.05:
+        st.success("Reject H0 — statistically significant difference (p < 0.05).")
+    else:
+        st.info("Fail to reject H0 — no significant difference (p ≥ 0.05).")
 
     st.subheader("Chi-Square Test — genre vs success")
     contingency = pd.crosstab(df["genre"], df["success"])
@@ -131,8 +133,10 @@ with tab3:
     col1.metric("Chi2 statistic", f"{chi2:.3f}")
     col2.metric("p-value", f"{p_val_chi:.4f}")
     st.write("**H0:** genre and success are independent.")
-    st.success("Reject H0 — genre is associated with success (p < 0.05).") if p_val_chi < 0.05 \
-        else st.info("Fail to reject H0 — no significant association between genre and success (p ≥ 0.05).")
+    if p_val_chi < 0.05:
+        st.success("Reject H0 — genre is associated with success (p < 0.05).")
+    else:
+        st.info("Fail to reject H0 — no significant association between genre and success (p ≥ 0.05).")
 
 # ---------- Tab 4: Predict ----------
 with tab4:
