@@ -63,8 +63,8 @@ with tab1:
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total movies", len(df))
     col2.metric("Overall success rate", f"{df['success'].mean()*100:.1f}%")
-    col3.metric("Avg budget", f"${df['budget'].mean():,.0f}")
-    col4.metric("Avg revenue", f"${df['revenue'].mean():,.0f}")
+    col3.metric("Avg budget", f"${df['budget'].mean()/1_000_000:,.1f}M")
+    col4.metric("Avg revenue", f"${df['revenue'].mean()/1_000_000:,.1f}M")
 
     st.subheader("Filtered data")
     st.dataframe(
